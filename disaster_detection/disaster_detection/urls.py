@@ -21,5 +21,5 @@ from disaster_detection.inference import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('disasterdetect/', views.inference)
+    path('disasterdetect/', views.inference_request)
 ]
