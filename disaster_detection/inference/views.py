@@ -15,6 +15,8 @@ def inference_request(request):
         image = convert_tensor(image)
 
         result = inference(image)
+        result = result.item()
+
         return JsonResponse({
             'result': result
         })
