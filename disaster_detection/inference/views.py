@@ -3,9 +3,11 @@ from django.shortcuts import render
 from PIL import Image
 
 from core.vision_transformer_inference import inference
+from django.views.decorators.csrf import csrf_exempt
 
 
 # git subtree pull --prefix=disaster_detection/core https://github.com/GoldenMine0502/DiasterDetectionCore.git master --squash
+@csrf_exempt
 def inference_request(request):
     # POST일 때 입력받은 이미지를 통해 inference 결과를 보여줌
     if request.method == 'POST' and request.FILES.get('image'):
@@ -21,5 +23,5 @@ def inference_request(request):
         })
 
     return JsonResponse({
-        'error': 'only supports post request'
+        'error': 'no image or error'
     })

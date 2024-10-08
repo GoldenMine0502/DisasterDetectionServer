@@ -108,6 +108,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:8000/',
+    'http://127.0.0.1:8000/',
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -130,3 +134,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_COOKIE_HTTPONLY = False  # 쿠키가 JavaScript에서 접근 가능하도록 설정 (기본값은 False)
+CSRF_COOKIE_SECURE = False  # HTTPS 요청에서만 CSRF 쿠키를 사용 (HTTP 사용 시 False로 설정)
+CSRF_USE_SESSIONS = False  # CSRF 토큰을 세션에 저장할지 여부 (기본값은 False)
+CSRF_COOKIE_NAME = 'csrftoken'
