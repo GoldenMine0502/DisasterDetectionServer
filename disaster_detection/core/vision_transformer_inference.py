@@ -30,7 +30,7 @@ def load_checkpoint(model, epoch, save_dir):
     start_epoch = checkpoint['epoch'] + 1
 
     print(f"Checkpoint loaded from '{checkpoint_path}', epoch {checkpoint['epoch']}.")
-    return model, optimizer, start_epoch
+    return model, None, start_epoch
 
 
 model_pretrained = ViTForImageClassification.from_pretrained(
@@ -46,7 +46,7 @@ model, optimizer, start_epoch = load_checkpoint(model, 36, 'chkpt/vision_transfo
 
 def inference(image):
     image = image.resize((224, 224), Image.LANCZOS)
-    image = val_transforms.transform(image)
+    image = val_transforms(image)
     image = image.unsqueeze(0)
     # image = convert_tensor(image).to(DEVICE)
     outputs = model(image)
