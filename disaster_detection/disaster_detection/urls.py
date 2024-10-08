@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from disaster_detection.inference import views
+from inference import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
